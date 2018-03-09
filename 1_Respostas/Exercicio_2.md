@@ -64,6 +64,6 @@ como ficam este byte e os seguintes, considerando que a memória é:
 
 ## 6. Sabendo que o processador do MSP430 tem registradores de 16 bits, como ele soma duas variáveis de 32 bits?
 
-Ele guarda na memoria  RAM as variaveis e depois, os resuldaos das operaçoes de soma anteriores.
+Ele guarda na memoria  RAM as variaveis de 32bits, necessitando de 2 ciclos para cada. Depois acessa as variaveis da memoria somando o LSB de cada, guradandando o resultado tambem na memoria e finaliza somando o MSB das duas variaveis.
 
 
