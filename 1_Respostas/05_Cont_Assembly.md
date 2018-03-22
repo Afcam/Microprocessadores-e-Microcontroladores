@@ -13,7 +13,7 @@
 
 ```Assembly
 mov.w #1, R11
-bis R11,R5
+bis R11,R5!@
 ```
 
 * (b) Somente setar dois bits de R6: o menos significativo e o segundo menos significativo.
