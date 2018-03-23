@@ -6,22 +6,37 @@
 	j: R8
 	A: R9
 
-	Utilize os registradores R11, R12, R13, R14 e R15 para armazenar valores temporários.
+	Utilize os registradores R11, R12, R13, R14 e R15
+	para armazenar valores temporários.
 
 ## 1. Escreva os trechos de código assembly do MSP430 para:
 #### (a) Somente setar o bit menos significativo de R5.
-
 ```Assembly
-mov.w #1, R11
-bis R11,R5!@
+and.w #0xfffe,R5
 ```
-
-* (b) Somente setar dois bits de R6: o menos significativo e o segundo menos significativo.
-* (c) Somente zerar o terceiro bit menos significativo de R7.
-* (d) Somente zerar o terceiro e o quarto bits menos significativo de R8.
-* (e) Somente inverter o bit mais significativo de R9.
-* (f) Inverter o nibble mais significativo de R10, e setar o nibble menos significativo de R10.
-
+#### (b) Somente setar dois bits de R6: o menos significativo e o segundo menos significativo.
+```Assembly
+and.w #0xfffd,R6;
+```
+#### (c) Somente zerar o terceiro bit menos significativo de R7.
+```Assembly
+and.w #0xfffb,R7
+```
+#### (d) Somente zerar o terceiro e o quarto bits menos significativo de R8.
+```Assembly
+and.w #0xfff3,R7
+```
+#### (e) Somente inverter o bit mais significativo de R9.
+```Assembly
+mov.w	R9,R11
+and.w #0x8000,R11
+inv.w R11
+add.w R11,R9
+```
+#### (f) Inverter o nibble mais significativo de R10, e setar o nibble menos significativo de R10.
+```Assembly
+and.w #0xfffe,R5
+```
 ## 2. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
 ```C
