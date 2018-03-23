@@ -63,7 +63,7 @@ EXIT:
 ...
 ```
 
-3. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
+## 3. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
 ```C
 while(save[i]!=k) i++;
