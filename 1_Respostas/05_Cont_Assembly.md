@@ -49,9 +49,9 @@ else f = g-h-10;
 ```
 
 ```Assembly
-cmp R8, R7		;R7 = i, R8 = j
-jl ELSE				;if(j<i) jump else
-add.w R6,R5  	;R5 = f, R6 = g
+cmp R8, R7			   ;R7 = i, R8 = j
+jl ELSE				  ;if(j<i) jump else
+add.w R6,R5  			;R5 = f, R6 = g
 add.w #000a,R5
 jmp EXIT
 
@@ -69,14 +69,41 @@ EXIT:
 while(save[i]!=k) i++;
 ```
 
-4. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
+## 4. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
 ```C
 for(i=0; i<100; i++) A[i] = i*2;
 ```
 
-5. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
+```Assembly
+.bss i,2 ; 		 		;int i
+mov.w #0,&i ;			   ;i=0
+mov.w i,R11
+for_loop: cmp.w #100,&i	 ;R10 = A, if(i<100)
+jge for_done
+mov.w i,R12
+rla R12
+mov.w 0(R11),R12
+add.w #1,&i
+jmp for_loop
+
+for_done:
+```
+
+## 5. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
 ```C
 for(i=99; i>=0; i--) A[i] = i*2;
 ```
+<!--
+```Assembly
+.bss i,2 ;
+mov.w #99,&i ;
+fl_loop: call #do_dot ;
+call #delay ;
+call #do_dash ;
+call #delay ;
+dec.w &i ;
+jnz fl_ck ;
+for_done: ;
+``` -->
