@@ -35,7 +35,11 @@ add.w R11,R9
 ```
 #### (f) Inverter o nibble mais significativo de R10, e setar o nibble menos significativo de R10.
 ```Assembly
-and.w #0xfffe,R5
+mov.w	R10,R11
+and.w #0xf000,R11
+inv.w R11
+and.w #0xfff0,R11
+add.w R11,R10
 ```
 ## 2. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
@@ -43,8 +47,20 @@ and.w #0xfffe,R5
 if(i>j) f = g+h+10;
 else f = g-h-10;
 ```
-```C
 
+```Assembly
+cmp R8, R7		;R7 = i, R8 = j
+jl ELSE				;if(j<i) jump else
+add.w R6,R5  	;R5 = f, R6 = g
+add.w #000a,R5
+jmp EXIT
+
+ELSE:
+sub.w R6, R4
+sub.w #000a,R5
+
+EXIT:
+...
 ```
 
 3. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
