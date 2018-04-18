@@ -98,7 +98,7 @@ void main (void)
 //Piscas Leds
 #include <msp430g2553.h>
 
-int main(void)
+int pisca(void)
 {
   volatile int i;
   // stop watchdog timer
