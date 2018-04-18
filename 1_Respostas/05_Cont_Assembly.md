@@ -12,34 +12,32 @@
 ## 1. Escreva os trechos de código assembly do MSP430 para:
 #### (a) Somente setar o bit menos significativo de R5.
 ```Assembly
-and.w #0xfffe,R5
+//bis realiza a operação OR bit-a-bit
+bis #BIT0, R5
 ```
 #### (b) Somente setar dois bits de R6: o menos significativo e o segundo menos significativo.
 ```Assembly
-and.w #0xfffd,R6;
+bis #BIT0, R6
+bis #BIT1, R6
 ```
 #### (c) Somente zerar o terceiro bit menos significativo de R7.
 ```Assembly
-and.w #0xfffb,R7
+// bic.w A, B realiza a operação AND bit-a-bit de B com o inverso de A
+bic.w #BIT0, R7
 ```
 #### (d) Somente zerar o terceiro e o quarto bits menos significativo de R8.
 ```Assembly
-and.w #0xfff3,R7
+bic.w #BIT2, R8
+bic.w #BIT3, R8
 ```
 #### (e) Somente inverter o bit mais significativo de R9.
 ```Assembly
-mov.w	R9,R11
-and.w #0x8000,R11
-inv.w R11
-add.w R11,R9
+xor.w #BIT7, R9
 ```
 #### (f) Inverter o nibble mais significativo de R10, e setar o nibble menos significativo de R10.
 ```Assembly
-mov.w	R10,R11
-and.w #0xf000,R11
-inv.w R11
-and.w #0xfff0,R11
-add.w R11,R10
+xor.w #0xF000, R10
+bis #BIT0, R10
 ```
 ## 2. "Traduza" o seguinte trecho de código em C para o assembly do MSP430:
 
